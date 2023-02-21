@@ -1,4 +1,4 @@
-#includee "main.h"
+#include "main.h"
 
 /**
  * print_alphabet - print all alphabelt in lowercase
