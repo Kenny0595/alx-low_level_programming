@@ -1,0 +1,1 @@
+instruction about pointer arrays
