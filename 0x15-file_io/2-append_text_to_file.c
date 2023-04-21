@@ -1,26 +1,25 @@
-i#include "main.h"
+#include "main.h"
 
 /**
  * append_text_to_file - appends text at the end of a file
  * @filename: filename.
  * @text_content: added content.
- * code by KENNY 
- * Return: if the file exist - 1.
- * if otherwise - -1.
+ * This code is written by kenny
+ * Return: 1 if the file exists. -1 if it does not exist
  * or if it fails.
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int nor;
+	int kar;
 	int nletters;
-	int r;
+	int rwr;
 
 	if (!filename)
 		return (-1);
 
-	nor = open(filename, O_WRONLY | O_APPEND);
+	kar = open(filename, O_WRONLY | O_APPEND);
 
-	if (nor == -1)
+	if (kar == -1)
 		return (-1);
 
 	if (text_content)
@@ -28,13 +27,13 @@ int append_text_to_file(const char *filename, char *text_content)
 		for (nletters = 0; text_content[nletters]; nletters = nletters + 1)
 			;
 
-		r = write(nor, text_content, nletters);
+		rwr = write(kar, text_content, nletters);
 
-		if (r == -1)
+		if (rwr == -1)
 			return (-1);
 	}
 
-	close(nor);
+	close(kar);
 
 	return (1);
-}i
+}
