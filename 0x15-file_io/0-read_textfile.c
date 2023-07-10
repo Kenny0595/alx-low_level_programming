@@ -3,34 +3,35 @@
 /**
  * read_textfile - reads a text file and prints the letters
  * @filename: filename.
- * @letters: numbers of letters printed.
- * Code by KENNY
- * Return: If the function fails or file name is NULL - 0.
+ * @letters: nums of letters printed.
+ * This code is constructed by KENNY
+ * wishing myself a goodluck 
+ * Return: nums of letters printed. return 0 if it fails.
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int nor;
-	ssize_t n, w;
-	char *buffer;
+	int kar;
+	ssize_t nrd, nwr;
+	char *buf;
 
 	if (!filename)
 		return (0);
 
-	nor = open(filename, O_RDONLY);
+	kar = open(filename, O_RDONLY);
 
-	if (nor == -1)
+	if (kar == -1)
 		return (0);
 
-	buffer = malloc(sizeof(char) * (letters));
-	if (!buffer)
+	buf = malloc(sizeof(char) * (letters));
+	if (!buf)
 		return (0);
 
-	n = read(nor, buffer, letters);
-	w = write(STDOUT_FILENO, buffer, n);
+	nrd = read(kar, buf, letters);
+	nwr = write(STDOUT_FILENO, buf, nrd);
 
-	close(nor);
+	close(kar);
 
-	free(buffer);
+	free(buf);
 
-	return (w);
+	return (nwr);
 }

@@ -4,22 +4,22 @@
  * create_file - creates a file
  * @filename: filename.
  * @text_content: content writed in the file.
- * code by KENNY  
- * Return: if function fails - -1.
- *         or 1 if it success
+ * This code is constructed by KENNY
+ * i am wishing myself a goodluck
+ * Return: if sucsessful return 1 but if otherwise return -1.
  */
 int create_file(const char *filename, char *text_content)
 {
-	int nor;
+	int kar;
 	int nletters;
-	int r;
+	int rwr;
 
 	if (!filename)
 		return (-1);
 
-	nor = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
+	kar = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
 
-	if (nor == -1)
+	if (kar == -1)
 		return (-1);
 
 	if (!text_content)
@@ -28,12 +28,12 @@ int create_file(const char *filename, char *text_content)
 	for (nletters = 0; text_content[nletters]; nletters = nletters + 1)
 		;
 
-	r = write(nor, text_content, nletters);
+	rwr = write(kar, text_content, nletters);
 
-	if (r == -1)
+	if (rwr == -1)
 		return (-1);
 
-	close(nor);
+	close(kar);
 
 	return (1);
 }

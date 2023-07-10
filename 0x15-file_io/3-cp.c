@@ -3,20 +3,21 @@
 
 /**
  * error_file - checks if files can be opened.
- * @file_base: file_base.
- * @file_origin: file_origin.
- * code by KENNY
+ * @file_from: file_from.
+ * @file_to: file_to.
+ * This code is CONSTRUCTED by KENNY
+ * WISHING MYSELF A GOODLUCK
  * @argv: arguments vector.
- * Return: no return.
+ * Return:there will be no return.
  */
-void error_file(int file_base, int file_origin, char *argv[])
+void error_file(int file_from, int file_to, char *argv[])
 {
-	if (file_base == -1)
+	if (file_from == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	if (file_origin == -1)
+	if (file_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
@@ -24,16 +25,17 @@ void error_file(int file_base, int file_origin, char *argv[])
 }
 
 /**
- * main - checking for the contect of the file.
+ * main - check the code for Holberton School students.
  * @argc: number of arguments.
  * @argv: arguments vector.
- * Return: Always 0.
+ * wishing my self a goodluck
+ * Return:the programe will Always return 0.
  */
 int main(int argc, char *argv[])
 {
-	int file_base, file_origin, err_end;
-	ssize_t pwd, n;
-	char buffer[1024];
+	int file_from, file_to, err_close;
+	ssize_t nchars, nwr;
+	char buf[1024];
 
 	if (argc != 3)
 	{
@@ -41,32 +43,32 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 
-	file_base = open(argv[1], O_RDONLY);
-	file_origin = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
-	error_file(file_base, file_origin, argv);
+	file_from = open(argv[1], O_RDONLY);
+	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
+	error_file(file_from, file_to, argv);
 
-	pwd = 1024;
-	while (pwd == 1024)
+	nchars = 1024;
+	while (nchars == 1024)
 	{
-		pwd = read(file_base, buffer, 1024);
-		if (pwd == -1)
+		nchars = read(file_from, buf, 1024);
+		if (nchars == -1)
 			error_file(-1, 0, argv);
-		n = write(file_origin, buffer, pwd);
-		if (n == -1)
+		nwr = write(file_to, buf, nchars);
+		if (nwr == -1)
 			error_file(0, -1, argv);
 	}
 
-	err_end = end(file_base);
-	if (err_end == -1)
+	err_close = close(file_from);
+	if (err_close == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_base);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
 		exit(100);
 	}
 
-	err_end = end(file_origin);
-	if (err_end == -1)
+	err_close = close(file_to);
+	if (err_close == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_base);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
 		exit(100);
 	}
 	return (0);
