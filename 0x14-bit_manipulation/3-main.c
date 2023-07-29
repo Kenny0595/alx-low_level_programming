@@ -20,4 +20,4 @@ int main(void)
     set_bit(&n, 0);
     printf("%lu\n", n);
     return (0);
-}}
+}
